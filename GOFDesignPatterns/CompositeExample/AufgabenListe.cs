@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace CompositeExample
 {
-    internal class AufgabenListe : Aufgabe
+    internal class AufgabenListe : Aufgabe, IEnumerable<Aufgabe>
     {
         public AufgabenListe(string beschreibung) : base(beschreibung)
         { }
@@ -24,5 +25,9 @@ namespace CompositeExample
         }
 
         public void Hinzufügen(Aufgabe aufgabe) => aufgaben.Add(aufgabe);
+
+        public IEnumerator<Aufgabe> GetEnumerator() => aufgaben.GetEnumerator();
+
+        IEnumerator IEnumerable.GetEnumerator() => aufgaben.GetEnumerator();
     }
 }

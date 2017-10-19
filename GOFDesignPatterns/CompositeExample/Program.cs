@@ -22,6 +22,23 @@ namespace CompositeExample
             aufgaben.Hinzufügen(urlaub);
 
             aufgaben.Erledigen();
+
+            Console.WriteLine("\n\n\n");
+            foreach (var a in aufgaben)
+            {
+                Console.WriteLine(a.Beschreibung);
+            }
+
+            var aufgabenEnumerator = aufgaben.GetEnumerator();
+            aufgabenEnumerator.Reset();
+            while(aufgabenEnumerator.MoveNext())
+            {
+                var a = aufgabenEnumerator.Current;
+                Console.WriteLine(a.Beschreibung);
+            }
+            aufgabenEnumerator.Reset();
+
+
             Console.ReadLine();
         }
     }
