@@ -1,4 +1,5 @@
-﻿using Core;
+﻿using AutoMapper;
+using Core;
 using Core.Models;
 using FakeItEasy;
 using Microsoft.AspNetCore.Mvc;
@@ -17,13 +18,23 @@ namespace WebApi.Tests.Controllers
     {
         [Fact]
         public void Constructor_when_crabRepository_is_null_should_throw_ArgumentNullException()
-            => Should.Throw<ArgumentNullException>(() => new CrabsController(null));
+        {
+            var mapper = A.Fake<IMapper>();
+            Should.Throw<ArgumentNullException>(() => new CrabsController(null, mapper));
+        }
+        [Fact]
+        public void Constructor_when_mapper_is_null_should_throw_ArgumentNullException()
+        {
+            var repository = A.Fake<ICrabRepository>();
+            Should.Throw<ArgumentNullException>(() => new CrabsController(repository, null));
+        }
 
         [Fact]
         public void Can_create_instance()
         {
             var repository = A.Fake<ICrabRepository>();
-            var controller = new CrabsController(repository);
+            var mapper = A.Fake<IMapper>();
+            var controller = new CrabsController(repository, mapper);
 
             controller.ShouldNotBeNull();
         }
@@ -32,7 +43,8 @@ namespace WebApi.Tests.Controllers
         public void GetCrabs_should_return_IActionResult_with_content_of_type_IEnumerable_of_CrabDto()
         {
             var repository = A.Fake<ICrabRepository>();
-            var controller = new CrabsController(repository);
+            var mapper = A.Fake<IMapper>();
+            var controller = new CrabsController(repository, mapper);
 
             var response = controller.GetCrabs();
             
@@ -52,7 +64,8 @@ namespace WebApi.Tests.Controllers
                 new Crab { Id = 84834, Name = "Crab4_oishgjtbaskas", Weight = 457.35765 },
             });
 
-            var controller = new CrabsController(repository);
+            Mapper.Initialize(c => c.AddProfile<Mappings.MappingProfile>());
+            var controller = new CrabsController(repository, Mapper.Instance);
 
             var response = controller.GetCrabs();
 
