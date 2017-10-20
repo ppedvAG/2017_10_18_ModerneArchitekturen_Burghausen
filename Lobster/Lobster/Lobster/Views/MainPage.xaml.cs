@@ -13,8 +13,8 @@ namespace Lobster.Views
         {
             InitializeComponent();
 
-
-            BindingContext = new ViewModels.MainViewModel();
+            DependencyService.Register<ViewModels.MainViewModel>();
+            BindingContext = DependencyService.Get<ViewModels.MainViewModel>();
         }
     }
 }
