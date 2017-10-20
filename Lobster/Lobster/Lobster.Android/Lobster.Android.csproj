@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{E24F2BD6-1E45-4BC4-B5C6-6272DD0D3B4A}</ProjectGuid>
+    <ProjectGuid>{BFEB883A-376E-49E2-9036-8DEC2C1F577D}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -121,7 +121,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Lobster\Lobster.csproj">
-      <Project>{7718bde0-2b44-4b40-9c13-c9a28657adcf}</Project>
+      <Project>{c3962f60-617b-4cb7-b130-8324083a64e3}</Project>
       <Name>Lobster</Name>
     </ProjectReference>
   </ItemGroup>

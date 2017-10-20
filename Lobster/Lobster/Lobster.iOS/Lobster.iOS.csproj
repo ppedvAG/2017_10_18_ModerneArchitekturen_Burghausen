@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{CB712FDC-955F-410C-AAA1-D557E168553E}</ProjectGuid>
+    <ProjectGuid>{B1D8ED17-3285-4B34-AD29-CDF8FA6DDD0D}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
     <RootNamespace>Lobster.iOS</RootNamespace>
@@ -135,7 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Lobster\Lobster.csproj">
-      <Project>{7718bde0-2b44-4b40-9c13-c9a28657adcf}</Project>
+      <Project>{c3962f60-617b-4cb7-b130-8324083a64e3}</Project>
       <Name>Lobster</Name>
     </ProjectReference>
   </ItemGroup>

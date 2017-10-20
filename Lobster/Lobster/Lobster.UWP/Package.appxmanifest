@@ -7,11 +7,11 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="ce6508ee-011a-43a7-b5bf-0bb8efe8d41e"
+    Name="f4c74783-f955-4706-b8ad-a00628f7bb6b"
     Publisher="CN=jw2"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="ce6508ee-011a-43a7-b5bf-0bb8efe8d41e" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="f4c74783-f955-4706-b8ad-a00628f7bb6b" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>Lobster.UWP</DisplayName>
