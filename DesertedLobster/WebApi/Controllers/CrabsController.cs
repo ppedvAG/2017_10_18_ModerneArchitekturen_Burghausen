@@ -1,7 +1,8 @@
 ﻿using Core;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
+using System.Linq;
+using WebApi.Dtos;
 
 namespace WebApi.Controllers
 {
@@ -16,7 +17,16 @@ namespace WebApi.Controllers
         [HttpGet]
         public IActionResult GetCrabs()
         {
-            return Ok(new[] { "Crab1", "Crab2", "Crab3", "Crab4" });
+            var crabs = crabRepository.GetAll();
+
+            var crabDtos = crabs.Select(c => new CrabDto
+            {
+                Id = c.Id,
+                Name = c.Name,
+                Weight = c.Weight
+            });
+
+            return Ok(crabDtos);
         }
     }
 }
