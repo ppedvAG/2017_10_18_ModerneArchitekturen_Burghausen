@@ -13,7 +13,7 @@ namespace Lobster
         {
             InitializeComponent();
 
-            MainPage = new Lobster.MainPage();
+            MainPage = new Lobster.Views.MainPage();
         }
 
         protected override void OnStart()

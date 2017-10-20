@@ -5,13 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace Lobster
+namespace Lobster.Views
 {
     public partial class MainPage : ContentPage
     {
         public MainPage()
         {
             InitializeComponent();
+
+
+            BindingContext = new ViewModels.MainViewModel();
         }
     }
 }
