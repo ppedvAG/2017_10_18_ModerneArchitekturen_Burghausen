@@ -1,20 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using Lobster.ViewModels;
 using Xamarin.Forms;
 
 namespace Lobster.Views
 {
     public partial class MainPage : ContentPage
     {
-        public MainPage()
+        protected MainViewModel ViewModel { get; }
+
+        public MainPage(MainViewModel viewModel)
         {
             InitializeComponent();
-
-            DependencyService.Register<ViewModels.MainViewModel>();
-            BindingContext = DependencyService.Get<ViewModels.MainViewModel>();
+            BindingContext = ViewModel = viewModel;
         }
+
+        protected override async void OnAppearing() => await ViewModel.Initialize();
     }
 }

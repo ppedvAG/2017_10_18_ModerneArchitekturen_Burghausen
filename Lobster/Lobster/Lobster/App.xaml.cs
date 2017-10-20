@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿
 using Xamarin.Forms;
 
 namespace Lobster
@@ -13,8 +9,9 @@ namespace Lobster
         {
             InitializeComponent();
 
-            DependencyService.Register<Views.MainPage>();
-            MainPage = DependencyService.Get<Views.MainPage>();
+            var crabService = new Services.CrabService();
+            var mainViewModel = new ViewModels.MainViewModel(crabService);
+            MainPage = new Views.MainPage(mainViewModel);
         }
 
         protected override void OnStart()

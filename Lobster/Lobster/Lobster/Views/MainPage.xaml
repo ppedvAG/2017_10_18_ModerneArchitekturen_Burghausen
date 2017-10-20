@@ -1,16 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:Lobster"
              x:Class="Lobster.Views.MainPage">
+    
+    
+    <ListView ItemsSource="{Binding Crabs}"
+              Margin="50">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal">
+                        <Image HeightRequest="40" 
+                               WidthRequest="40" 
+                               Source="http://lorempixel.com/40/40/animals/"/>
 
-    <StackLayout VerticalOptions="Center" >
+                        <Label Margin="8, 0, 0, 0" 
+                               Text="{Binding Name}" 
+                               MinimumWidthRequest="80" />
 
-        <Label Text="Welcome to Xamarin Forms!" 
-               HorizontalOptions="Center" />
 
-        <Label Text="{Binding WelcomeText} "
-               HorizontalOptions="Center" />
-        
-    </StackLayout>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 </ContentPage>
+
+
+<!--<div>Icons made by
+    <a href="http://www.freepik.com" title="Freepik">Freepik</a> from
+    <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by
+    <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
+    </div> -->
