@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using Lobster.Models;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
-using Lobster.Models;
 
 namespace Lobster.Services
 {
@@ -8,10 +11,14 @@ namespace Lobster.Services
     {
         public async Task<IEnumerable<Crab>> GetCrabs()
         {
-            return await Task.FromResult(new[]
-            {
-                new Crab { Id = 1, Name = "From Service" }
-            });
+            var client = new HttpClient();
+
+            var response = await client.GetAsync(new Uri("http://crabs.azurewebsites.net/api/crabs"));
+            var json = await response.Content.ReadAsStringAsync();
+
+            var crabs = JsonConvert.DeserializeObject<IEnumerable<Crab>>(json);
+
+            return crabs;
         }
     }
 }
