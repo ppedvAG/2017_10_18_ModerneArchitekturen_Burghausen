@@ -17,15 +17,10 @@ namespace DecoratorExample
             //dataService = new Caching.CachingDataService(dataService, cache);
             //var vm = new ViewModel(dataService);
 
-            var container = new Container(c =>
-            {
-                c.For<Logging.ILogger>().Use<Logging.ConsoleLogger>().Singleton();
-                c.For<Caching.ICache>().Use<Caching.SimpleCache>().Singleton();
+            var container = new Container();
 
-                c.For<IDataService>().Use<Data.DataService>();
-                c.For<IDataService>().DecorateAllWith<Logging.LoggingDataService>();
-                c.For<IDataService>().DecorateAllWith<Caching.CachingDataService>();
-            });
+            container.Configure(c => c.AddRegistry<CommonRegistry>());
+
 
             var vm = container.GetInstance<ViewModel>();
 
@@ -51,5 +46,19 @@ namespace DecoratorExample
         public IEnumerable<string> Customers { get; internal set; }
 
         internal void Initialize() => Customers = dataService.GetCustomers();
+    }
+
+    internal class CommonRegistry : Registry
+    {
+        public CommonRegistry()
+        {
+            For<Logging.ILogger>().Use<Logging.ConsoleLogger>().Singleton();
+            For<Caching.ICache>().Use<Caching.SimpleCache>().Singleton();
+
+            For<IDataService>().Use<Data.DataService>();
+
+            For<IDataService>().DecorateAllWith<Logging.LoggingDataService>();
+            For<IDataService>().DecorateAllWith<Caching.CachingDataService>();
+        }
     }
 }
